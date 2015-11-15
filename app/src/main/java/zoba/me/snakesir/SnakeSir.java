@@ -6,23 +6,29 @@ import android.graphics.Paint;
 import java.util.ArrayList;
 import java.util.List;
 
+import zoba.me.snakesir.bean.SnakeSirBody;
+
 /**
- *
+ * 蛇的操作类
  * Created by onlyfu on 11/15/2015.
  */
 public class SnakeSir {
 
     // 起始坐标
-    final int startPositionX = 60;
-    final int startPositionY = 10;
+    final int startPositionX = 80;
+    final int startPositionY = 80;
 
     // 初始蛇身长度
-    final int snakeBodyLen = 5;
+    final int snakeBodyLen = 15;
 
     // 蛇头前进方向
     private int headDirection = 2;
 
     private List<SnakeSirBody> snakeBody = new ArrayList<>();
+
+    public SnakeSir() {
+        System.out.println("init");
+    }
 
     /**
      * 初始化snakeSir

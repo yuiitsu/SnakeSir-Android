@@ -20,12 +20,12 @@ public class GameView extends View {
     private int direction;
 
     Paint p = new Paint();
-    SnakeSir snakeSir;
+    SnakeSir snakeSir = new SnakeSir();
 
     public GameView(Context context) {
         super(context);
 
-        snakeSir = new SnakeSir();
+        //snakeSir = new SnakeSir();
 
         direction = 2;
     }
@@ -69,5 +69,9 @@ public class GameView extends View {
 
     public int getBodyHeight() {
         return bodyHeight;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
     }
 }

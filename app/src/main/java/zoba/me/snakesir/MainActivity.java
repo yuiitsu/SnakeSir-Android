@@ -1,11 +1,15 @@
 package zoba.me.snakesir;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.FrameLayout;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -32,8 +36,16 @@ public class MainActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        setContentView(R.layout.activity_main);
+
         gameView = new GameView(this);
-        setContentView(gameView);
+
+        FrameLayout root = (FrameLayout) this.findViewById(R.id.root);
+        gameView.setMinimumWidth(300);
+        gameView.setMinimumHeight(500);
+        //gameView.setBackgroundColor(Color.RED);
+        root.addView(gameView);
+        //setContentView(gameView);
 
         gameHandler = new GameHandler(MainActivity.this);
 
@@ -47,6 +59,39 @@ public class MainActivity extends Activity {
         tableWidth = metrics.widthPixels;
         tableHeight = metrics.heightPixels;
 
+        // 控制
+        Button upButton = (Button) this.findViewById(R.id.upButton);
+        upButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameView.setDirection(1);
+            }
+        });
+
+        Button rightButton = (Button) this.findViewById(R.id.rightButton);
+        rightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameView.setDirection(2);
+            }
+        });
+
+        Button downButton = (Button) this.findViewById(R.id.downButton);
+        downButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameView.setDirection(3);
+            }
+        });
+
+        Button leftButton = (Button) this.findViewById(R.id.leftButton);
+        leftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameView.setDirection(4);
+            }
+        });
+
         // 定时器
         final Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -55,6 +100,6 @@ public class MainActivity extends Activity {
 
                 gameHandler.sendEmptyMessage(0x123);
             }
-        }, 0, 1000);
+        }, 0, 100);
     }
 }
