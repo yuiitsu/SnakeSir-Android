@@ -1,4 +1,4 @@
-package zoba.me.snakesir;
+package zoba.me.snakesir.manager;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;

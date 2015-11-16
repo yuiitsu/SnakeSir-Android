@@ -7,6 +7,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import zoba.me.snakesir.manager.SnakeSir;
+
 /**
  *
  * Created by onlyfu on 11/15/2015.
@@ -24,8 +26,6 @@ public class GameView extends View {
 
     public GameView(Context context) {
         super(context);
-
-        //snakeSir = new SnakeSir();
 
         direction = 2;
     }
